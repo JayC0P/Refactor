@@ -13,7 +13,6 @@ class MovieTest {
 		
 		String title0 = "jefhwehfhiwhiu";
 		Movie movie0 = new Movie(title0, 0);
-		assertEquals(0, movie0.getPriceCode());
 		assertEquals(title0, movie0.getTitle());
 		
 		}

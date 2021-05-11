@@ -24,29 +24,29 @@ public class Customer {
 		result.append("Rental Record for " + this.getName() + "\n");
 		result.append("\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n");
 		result.append(getRentalRecordTable());
-		result.append("Amount owed is " + String.valueOf(calculateTotalAmount()) + "\n");
-		result.append("You earned " + String.valueOf(calculateTotalRenterPoints()) + " frequent renter points");
+		result.append("Amount owed is " + String.valueOf(getTotalCharge()) + "\n");
+		result.append("You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points");
 		return result.toString();
 	}
-
-	private String getRentalRecordTable() {
-		StringBuilder result = new StringBuilder();
-		for (Rental rental : rentals) {
-			result.append("\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t"
-					+ String.valueOf(rental.getAmount()) + "\n");
-		}
-		return result.toString();
-	}
-
-	private double calculateTotalAmount() {
+	
+	public double getTotalCharge() {
 		double totalAmount = 0;
 		for (Rental rental : rentals) {
-			totalAmount += rental.getAmount();
+			totalAmount += rental.getCharge();
 		}
 		return totalAmount;
 	}
-
-	private int calculateTotalRenterPoints() {
+	
+	public String getRentalRecordTable() {
+		StringBuilder result = new StringBuilder();
+		for (Rental rental : rentals) {
+			result.append("\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t"
+					+ String.valueOf(rental.getCharge()) + "\n");
+		}
+		return result.toString();
+	}
+	
+	public int getTotalFrequentRenterPoints() {
 		int totalFrequentRenterPoints = 0;
 		for (Rental rental : rentals) {
 			totalFrequentRenterPoints += rental.getFrequentRenterPoints();
